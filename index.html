@@ -233,7 +233,8 @@ function addInternship() {
     "<p>Location: " + location + "</p>" +
     "<span class='status'>" + status + "</span>" +
     "<br>" +
-    "<button onclick='deleteInternship(this)'>Delete</button>";
+    "<button onclick='editInternship(this)'>Edit</button>" +
+"<button onclick='deleteInternship(this)'>Delete</button>";
 
     document.getElementById("internshipForm").before(internship);
 
@@ -263,6 +264,24 @@ document.getElementById("selectedCount").innerText = selectedTotal;
 
 document.getElementById("internshipForm").style.display = "none";
 
+}
+        function editInternship(button) {
+
+    var internship = button.parentElement;
+
+    var role = internship.querySelector("h3").innerText;
+    var company = internship.querySelectorAll("p")[0].innerText.replace("Company: ", "");
+    var location = internship.querySelectorAll("p")[1].innerText.replace("Location: ", "");
+    var status = internship.querySelector(".status").innerText;
+
+    document.getElementById("role").value = role;
+    document.getElementById("company").value = company;
+    document.getElementById("location").value = location;
+    document.getElementById("status").value = status;
+
+    internship.remove();
+
+    document.getElementById("internshipForm").style.display = "block";
 }
         function deleteInternship(button) {
 
