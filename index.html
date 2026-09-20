@@ -202,7 +202,7 @@
         <option value="Selected">Selected</option>
     </select>
 
-    <button onclick="addInternship()">Add Internship</button>
+    <button id="formButton" onclick="addInternship()">Add Internship</button>
 
 </div>
 
@@ -265,7 +265,7 @@ document.getElementById("selectedCount").innerText = selectedTotal;
 document.getElementById("internshipForm").style.display = "none";
 
 }
-        function editInternship(button) {
+      function editInternship(button) {
 
     var internship = button.parentElement;
 
@@ -282,6 +282,45 @@ document.getElementById("internshipForm").style.display = "none";
     internship.remove();
 
     document.getElementById("internshipForm").style.display = "block";
+
+    document.getElementById("formButton").innerText = "Save Changes";
+    document.getElementById("formButton").setAttribute("onclick", "saveEdit()");
+}
+        function saveEdit() {
+
+    var role = document.getElementById("role").value;
+    var company = document.getElementById("company").value;
+    var location = document.getElementById("location").value;
+    var status = document.getElementById("status").value;
+
+    if (role === "" || company === "" || location === "") {
+        alert("Please fill all details!");
+        return;
+    }
+
+    var internship = document.createElement("div");
+    internship.className = "internship";
+
+    internship.innerHTML =
+        "<h3>" + role + "</h3>" +
+        "<p>Company: " + company + "</p>" +
+        "<p>Location: " + location + "</p>" +
+        "<span class='status'>" + status + "</span>" +
+        "<br>" +
+        "<button onclick='editInternship(this)'>Edit</button>" +
+        "<button onclick='deleteInternship(this)'>Delete</button>";
+
+    document.getElementById("internshipForm").before(internship);
+
+    document.getElementById("role").value = "";
+    document.getElementById("company").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("status").value = "Applied";
+
+    document.getElementById("formButton").innerText = "Add Internship";
+    document.getElementById("formButton").setAttribute("onclick", "addInternship()");
+
+    document.getElementById("internshipForm").style.display = "none";
 }
         function deleteInternship(button) {
 
