@@ -147,17 +147,17 @@
 
             <div class="card">
                 <h3>Total Applications</h3>
-                <p>5</p>
+                <p id="totalApplications">5</p>
             </div>
 
             <div class="card">
                 <h3>Interviews</h3>
-                <p>2</p>
+                <p id="interviewCount">2</p>
             </div>
 
             <div class="card">
                 <h3>Selected</h3>
-                <p>1</p>
+               <p id="selectedCount">1</p> 
             </div>
 
         </div>
@@ -240,6 +240,26 @@ function addInternship() {
     document.getElementById("location").value = "";
     document.getElementById("status").value = "Applied";
 
+
+var total = parseInt(document.getElementById("totalApplications").innerText);
+var interviewTotal = parseInt(document.getElementById("interviewCount").innerText);
+var selectedTotal = parseInt(document.getElementById("selectedCount").innerText);
+
+total++;
+
+if (status === "Interview") {
+    interviewTotal++;
+}
+
+if (status === "Selected") {
+    selectedTotal++;
+}
+
+document.getElementById("totalApplications").innerText = total;
+document.getElementById("interviewCount").innerText = interviewTotal;
+document.getElementById("selectedCount").innerText = selectedTotal;
+
+document.getElementById("internshipForm").style.display = "none";
     
 } 
 
