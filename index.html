@@ -214,8 +214,35 @@ function showForm() {
     document.getElementById("internshipForm").style.display = "block";
 }
 function addInternship() {
+    var role = document.getElementById("role").value;
+    var company = document.getElementById("company").value;
+    var location = document.getElementById("location").value;
+    var status = document.getElementById("status").value;
+
+    if (role === "" || company === "" || location === "") {
+        alert("Please fill all details!");
+        return;
+    }
+
+    var internship = document.createElement("div");
+    internship.className = "internship";
+
+    internship.innerHTML =
+        "<h3>" + role + "</h3>" +
+        "<p>Company: " + company + "</p>" +
+        "<p>Location: " + location + "</p>" +
+        "<span class='status'>" + status + "</span>";
+
+    document.getElementById("internshipForm").before(internship);
+
+    document.getElementById("role").value = "";
+    document.getElementById("company").value = "";
+    document.getElementById("location").value = "";
+    document.getElementById("status").value = "Applied";
+
     alert("Internship added successfully!");
-}
+} 
+
     </script>
    
 
