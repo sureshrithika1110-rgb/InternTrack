@@ -183,15 +183,41 @@
             <button onclick='showForm()' >
                 + Add Internship
             </button>
+            <div id="internshipForm" style="display:none; margin-top:20px; padding:20px; border:1px solid #ddd; border-radius:10px;">
+
+    <h3>Add New Internship</h3>
+
+    <input type="text" id="role" placeholder="Internship Role"
+           style="display:block; margin-top:10px; padding:10px; width:100%;">
+
+    <input type="text" id="company" placeholder="Company Name"
+           style="display:block; margin-top:10px; padding:10px; width:100%;">
+
+    <input type="text" id="location" placeholder="Location"
+           style="display:block; margin-top:10px; padding:10px; width:100%;">
+
+    <select id="status" style="display:block; margin-top:10px; padding:10px; width:100%;">
+        <option value="Applied">Applied</option>
+        <option value="Interview">Interview</option>
+        <option value="Selected">Selected</option>
+    </select>
+
+    <button onclick="addInternship()">Add Internship</button>
+
+</div>
 
         </div>
 
     </div>
     <script>
 function showForm() {
-    alert("BUTTON WORKING!");
+    document.getElementById("internshipForm").style.display = "block";
 }
-</script>
+function addInternship() {
+    alert("Internship added successfully!");
+}
+    </script>
+   
 
 </body>
 </html>
