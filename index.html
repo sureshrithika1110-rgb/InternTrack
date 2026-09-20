@@ -228,10 +228,12 @@ function addInternship() {
     internship.className = "internship";
 
     internship.innerHTML =
-        "<h3>" + role + "</h3>" +
-        "<p>Company: " + company + "</p>" +
-        "<p>Location: " + location + "</p>" +
-        "<span class='status'>" + status + "</span>";
+    "<h3>" + role + "</h3>" +
+    "<p>Company: " + company + "</p>" +
+    "<p>Location: " + location + "</p>" +
+    "<span class='status'>" + status + "</span>" +
+    "<br>" +
+    "<button onclick='deleteInternship(this)'>Delete</button>";
 
     document.getElementById("internshipForm").before(internship);
 
@@ -260,8 +262,32 @@ document.getElementById("interviewCount").innerText = interviewTotal;
 document.getElementById("selectedCount").innerText = selectedTotal;
 
 document.getElementById("internshipForm").style.display = "none";
-    
-} 
+
+} function deleteInternship(button) {
+
+    var internship = button.parentElement;
+    var status = internship.querySelector(".status").innerText;
+
+    internship.remove();
+
+    var total = parseInt(document.getElementById("totalApplications").innerText);
+    var interviews = parseInt(document.getElementById("interviewCount").innerText);
+    var selected = parseInt(document.getElementById("selectedCount").innerText);
+
+    total--;
+
+    if (status === "Interview") {
+        interviews--;
+    }
+
+    if (status === "Selected") {
+        selected--;
+    }
+
+    document.getElementById("totalApplications").innerText = total;
+    document.getElementById("interviewCount").innerText = interviews;
+    document.getElementById("selectedCount").innerText = selected;
+}
 
     </script>
    
